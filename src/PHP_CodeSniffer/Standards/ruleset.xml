@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<ruleset name="ValeSaude">
+    <description>The Vale Saúde coding standard.</description>
+
+    <!-- Syntax Sniff -->
+    <!-- Run PHP lint -->
+    <!-- See: https://github.com/squizlabs/PHP_CodeSniffer/blob/master/src/Standards/Generic/Sniffs/PHP/SyntaxSniff.php -->
+    <rule ref="Generic.PHP.Syntax"/>
+
+    <!-- PSR1 rules -->
+    <!-- See: https://www.php-fig.org/psr/psr-1/ -->
+    <!-- See: https://github.com/squizlabs/PHP_CodeSniffer/blob/master/src/Standards/PSR1/ruleset.xml -->
+
+    <!-- 2.3. Side Effects -->
+    <!-- A file SHOULD declare new symbols (classes, functions, constants, etc.) and cause no other side effects, or it SHOULD execute logic with side effects, but SHOULD NOT do both. -->
+    <rule ref="PSR1.Files.SideEffects"/>
+
+    <!-- 3. Namespace and Class Names -->
+    <!-- Namespaces and classes MUST follow PSR-0. -->
+    <!-- This means each class is in a file by itself, and is in a namespace of at least one level: a top-level vendor name. -->
+    <rule ref="PSR1.Classes.ClassDeclaration"/>
+    <!-- Allow multiple classes in same file on tests/* (usually used for mocking) -->
+    <rule ref="PSR1.Classes.ClassDeclaration.MultipleClasses">
+        <exclude-pattern>tests/*</exclude-pattern>
+    </rule>
+    <!-- Ignore missing namespace on migration files. -->
+    <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
+        <exclude-pattern>database/migrations/*</exclude-pattern>
+    </rule>
+
+    <!-- Class names MUST be declared in StudlyCaps. -->
+    <rule ref="Squiz.Classes.ValidClassName"/>
+
+    <!-- 4.1. Constants -->
+    <!-- Class constants MUST be declared in all upper case with underscore separators. -->
+    <rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
+
+    <!-- 4.3. Methods -->
+    <!-- Method names MUST be declared in camelCase(). -->
+    <rule ref="PSR1.Methods.CamelCapsMethodName"/>
+    <!-- Allow camelCase class methods on tests/* (used in test method names, like test_it_works()) -->
+    <rule ref="PSR1.Methods.CamelCapsMethodName.NotCamelCaps">
+        <exclude-pattern>tests/*</exclude-pattern>
+    </rule>
+
+    <!-- PSR12 rules -->
+    <!-- See: https://www.php-fig.org/psr/psr-12/ -->
+    <!-- See: https://github.com/squizlabs/PHP_CodeSniffer/blob/master/src/Standards/PSR12/ruleset.xml -->
+
+    <!-- 2.3 Lines -->
+    <!-- There MUST NOT be a hard limit on line length. -->
+    <!-- The soft limit on line length MUST be 120 characters. -->
+    <!-- Lines SHOULD NOT be longer than 80 characters; lines longer than that SHOULD be split into multiple subsequent lines of no more than 80 characters each. -->
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="120"/>
+            <property name="absoluteLineLimit" value="0"/>
+        </properties>
+    </rule>
+
+    <!-- There MUST NOT be more than one statement per line. -->
+    <rule ref="Generic.Formatting.DisallowMultipleStatements"/>
+
+    <!-- 4. Classes, Properties, and Methods -->
+    <!-- Any closing brace MUST NOT be followed by any comment or statement on the same line. -->
+    <rule ref="PSR12.Classes.ClosingBrace"/>
+
+    <!-- 4.2 Using traits -->
+    <!-- The use keyword used inside the classes to implement traits MUST be declared on the next line after the opening brace. -->
+    <!-- Each individual trait that is imported into a class MUST be included one-per-line and each inclusion MUST have its own use import statement. -->
+    <!-- When the class has nothing after the use import statement, the class closing brace MUST be on the next line after the use import statement. Otherwise, it MUST have a blank line after the use import statement. -->
+    <!-- When using the insteadof and as operators they must be used as follows taking note of indentation, spacing, and new lines. -->
+    <rule ref="PSR12.Traits.UseDeclaration"/>
+
+    <!-- 4.3 Properties and Constants -->
+    <!-- Visibility MUST be declared on all properties. -->
+    <!-- The var keyword MUST NOT be used to declare a property. -->
+    <!-- There MUST NOT be more than one property declared per statement. -->
+    <!-- Property names MUST NOT be prefixed with a single underscore to indicate protected or private visibility.
+    That is, an underscore prefix explicitly has no meaning. -->
+    <!-- There MUST be a space between type declaration and property name. -->
+    <rule ref="PSR2.Classes.PropertyDeclaration"/>
+
+    <!-- 4.5 Method and Function Arguments -->
+    <!-- Method and function arguments with default values MUST go at the end of the argument list. -->
+    <rule ref="PEAR.Functions.ValidDefaultValue"/>
+
+    <!-- 5.2 switch, case -->
+    <!-- The case statement MUST be indented once from switch, and the break keyword (or other terminating keywords) MUST be indented at the same level as the case body. There MUST be a comment such as // no break when fall-through is intentional in a non-empty case body. -->
+    <rule ref="PSR2.ControlStructures.SwitchDeclaration"/>
+    <!-- Ignore missing // no break sniff since it will be fixed by PHP CS Fixer -->
+    <rule ref="PSR2.ControlStructures.SwitchDeclaration.TerminatingComment"/>
+
+    <!-- Symfony rules -->
+    <!-- See: https://symfony.com/doc/current/contributing/code/standards.html -->
+    <!-- See: https://github.com/djoos/Symfony-coding-standard/blob/master/Symfony/ruleset.xml -->
+
+    <!-- Identical comparison is preferred. -->
+    <rule ref="Symfony.ControlStructure.IdenticalComparison"/>
+
+    <!-- Filenames MUST contain only alphanumeric and underscore characters. -->
+    <rule ref="Symfony.Files.AlphanumericFilename"/>
+    <!-- Except for config and route files. -->
+    <rule ref="Symfony.Files.AlphanumericFilename.Invalid">
+        <exclude-pattern>config/*</exclude-pattern>
+        <exclude-pattern>routes/*</exclude-pattern>
+    </rule>
+
+    <!-- There MUST be no else/elseif/break statement after if/case which return or throw. -->
+    <rule ref="Symfony.Formatting.ReturnOrThrow"/>
+
+    <!-- Checks whether a function returns the appropriate return type. -->
+    <rule ref="Symfony.Functions.ReturnType"/>
+
+    <!-- Interface/trait/exception names MUST be suffixed, respectively, with Interface/Trait/Exception. -->
+    <!-- Abstract class names must be prefixed with Abstract. -->
+    <rule ref="Symfony.NamingConventions.ValidClassName">
+        <exclude-pattern>tests/*</exclude-pattern>
+    </rule>
+</ruleset>

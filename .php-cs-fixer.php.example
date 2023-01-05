@@ -1,0 +1,12 @@
+<?php
+
+use PhpCsFixer\Finder;
+use ValeSaude\PHPCodeStyle\PhpCsFixer\Config;
+
+$finder = Finder::create()->in(['./app']);
+
+return (new Config())
+    // To add/override rules, use the following method instead of ->setRules()
+    //->mergeRules(['phpdoc_to_comment' => false])
+    ->setFinder($finder);
+

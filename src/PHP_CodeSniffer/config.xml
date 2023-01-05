@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<ruleset>
+    <arg name="encoding" value="utf-8"/>
+    <arg name="extensions" value="php"/>
+    <arg name="colors"/>
+    <arg name="tab-width" value="4"/>
+    <arg value="s"/>
+
+    <!-- Prevent CLI from returning exit code 1 on warning -->
+    <config name="ignore_warnings_on_exit" value="1"/>
+
+    <rule ref="./Standards/ruleset.xml"/>
+</ruleset>
