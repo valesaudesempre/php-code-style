@@ -19,11 +19,6 @@
         "escapestudios/symfony2-coding-standard": "^3.12",
         "dealerdirect/phpcodesniffer-composer-installer": "^1.0"
     },
-    "bin": [
-        "vendor/friendsofphp/php-cs-fixer/php-cs-fixer",
-        "vendor/squizlabs/php_codesniffer/bin/phpcs",
-        "vendor/squizlabs/php_codesniffer/bin/phpcbf"
-    ],
     "config": {
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true
