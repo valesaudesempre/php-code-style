@@ -7,8 +7,8 @@ final class Ruleset
     public static function getRules(): array
     {
         $rules = [
-            // Import the whole PSR12 ruleset
-            '@PSR12' => true,
+            // Import the whole PER ruleset
+            '@PER' => true,
 
             #region Rules without custom configuration
             // General rules
