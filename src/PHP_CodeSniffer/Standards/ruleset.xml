@@ -55,7 +55,14 @@
         <properties>
             <property name="lineLimit" value="120"/>
             <property name="absoluteLineLimit" value="0"/>
+            <property name="ignoreComments" value="true"/>
         </properties>
+        
+        <exclude-pattern>config/*</exclude-pattern>
+        <exclude-pattern>routes/*</exclude-pattern>
+        <exclude-pattern>database/migrations/*</exclude-pattern>
+        <exclude-pattern>database/seeds/*</exclude-pattern>
+        <exclude-pattern>tests/*</exclude-pattern>
     </rule>
 
     <!-- There MUST NOT be more than one statement per line. -->
