@@ -27,6 +27,10 @@
     <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
         <exclude-pattern>database/migrations/*</exclude-pattern>
     </rule>
+    <!-- Ignore side effects validation on test files -->
+    <rule ref="PSR1.Files.SideEffects.FoundWithSymbols">
+        <exclude-pattern>tests/*</exclude-pattern>
+    </rule>
 
     <!-- Class names MUST be declared in StudlyCaps. -->
     <rule ref="Squiz.Classes.ValidClassName"/>
